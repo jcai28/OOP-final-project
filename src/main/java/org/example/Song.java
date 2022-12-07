@@ -66,8 +66,13 @@ public class Song extends Entity {
     }
 
     public String toSQL() {
-        return "insert into songs (id, name, album, artist) values (" + this.entityID + ", \"" + this.name + "\", " + album.entityID + ", "
-                + performer.entityID  + ");";
+        return "insert into songs (id, name, artist, album, genre) values (" + this.entityID + ", \"" + this.name + "\", "
+                + performer.entityID  + ", "+ album.entityID+ ", \"" + this.genre + "\""+ ");";
+    }
+    public String toXML() {
+        return "\n<song> <title>"+name +"</title> <artist>"+ performer.getName()
+                +"</artist> <album>"+album.getName()+"</album> </song>";
+
     }
 
     public void fromSQL(ResultSet rs) {

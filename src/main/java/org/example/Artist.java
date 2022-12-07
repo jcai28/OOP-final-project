@@ -34,8 +34,7 @@ public class Artist extends Entity {
         songs.add(s);
     }
     public String toSQL() {
-        return "insert into artists (id, name, nsongs, nalbums) values (" + this.entityID + ", \"" + this.name + "\", " + songs.size() + ", "
-                + albums.size()  + ");";
+        return "insert into artists (id, name) values (" + this.entityID + ", \"" + this.name + "\" "+ ");";
     }
 
     public void fromSQL(ResultSet rs) {

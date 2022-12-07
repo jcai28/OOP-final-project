@@ -13,7 +13,7 @@ public class Album extends Entity {
     }
 
     public String getName() {
-        System.out.println("this is an album" + super.getName());
+
         return name;
     }
 
@@ -45,7 +45,7 @@ public class Album extends Entity {
     }
 
     public String toSQL() {
-        return "insert into albums (id, name, nsongs, artistid) values (" + this.entityID + ", \"" + this.name + "\", " + songs.size() + ", "
+        return "insert into albums (id, name,artist) values (" + this.entityID + ", \"" + this.name + "\", "
                 + artist.entityID + ");";
     }
 
