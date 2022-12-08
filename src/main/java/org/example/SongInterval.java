@@ -1,5 +1,8 @@
 package org.example;
 
+/**
+ * a helper class for song represent the duration of song
+ */
 public class SongInterval {
     private int length;
 

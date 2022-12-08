@@ -1,13 +1,18 @@
 package org.example;
 
 import java.util.Date;
-
+/**
+ * each entity object have a name and an id
+ */
 public class Entity {
     protected String name;
     protected static int counter = 0;
     protected int entityID;
     protected Date dateCreated;
 
+    /**
+     * creat a new entity with name as empty string and id as current count
+     */
     public Entity() {
         this.name = "";
         counter++;

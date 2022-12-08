@@ -6,7 +6,9 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-
+/**
+ * Song is a object inherited from Entity
+ */
 public class Song extends Entity {
     protected Album album;
     protected Artist performer;
@@ -21,6 +23,7 @@ public class Song extends Entity {
         genre = "";
 
     }
+
     public Song(String name, int length) {
         super(name);
         duration = new SongInterval(length);
@@ -60,21 +63,28 @@ public class Song extends Entity {
         this.performer = performer;
     }
 
-    public String toString() {
-        return super.toString() + " " + this.performer + " " + this.album + " " + this.duration;
 
-    }
-
+    /**
+     * generate a sql execution statement inserting this song to the database
+     * @return a sql statement
+     */
     public String toSQL() {
         return "insert into songs (id, name, artist, album, genre) values (" + this.entityID + ", \"" + this.name + "\", "
                 + performer.entityID  + ", "+ album.entityID+ ", \"" + this.genre + "\""+ ");";
     }
+    /**
+     * generate a xml format string
+     * @return a sql statement
+     */
     public String toXML() {
         return "\n<song> <title>"+name +"</title> <artist>"+ performer.getName()
                 +"</artist> <album>"+album.getName()+"</album> </song>";
 
     }
-
+    /**
+     * set this object the name and id read from database
+     * @param rs the data from database
+     */
     public void fromSQL(ResultSet rs) {
         try {
             this.entityID = rs.getInt("id");

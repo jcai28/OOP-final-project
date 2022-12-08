@@ -15,10 +15,12 @@ import java.sql.*;
 import java.util.*;
 
 /**
- * Hello world!
- *
+ * A simple music library
+ * could add music by artist
+ * could generate random playlist
  */
 public class App
+
 {
 
     public static void main( String[] args )
@@ -155,6 +157,12 @@ public class App
         }
 
     }
+
+    /**
+     *
+     * @param name the artist name user provided
+     * @param database the database name in use
+     */
     public static void TheAudioDBAlbumAPI(String name, String database) {
         String requestURL = "https://theaudiodb.com/api/v1/json/523532/searchalbum.php?s=";
         String artist = name;
@@ -208,7 +216,7 @@ public class App
             Connection connection = null;
             try {
                 // create a database connection
-                connection = DriverManager.getConnection("jdbc:sqlite:music.db");
+                connection = DriverManager.getConnection("jdbc:sqlite:"+database);
                 Statement statement = connection.createStatement();
                 statement.setQueryTimeout(30);  // set timeout to 30 sec.
                 statement.executeUpdate(a.toSQL());
@@ -247,6 +255,11 @@ public class App
         }
 
     }
+    /**
+     *
+     * @param albumID the albumId of the artist user specified
+     * @param database the database name in use
+     */
     public static void TheAudioDBSongsAPI(String albumID, String database) {
         String requestURL = "https://theaudiodb.com/api/v1/json/2/track.php?m=";;
         StringBuilder response = new StringBuilder();
